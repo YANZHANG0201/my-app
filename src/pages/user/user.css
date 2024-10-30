@@ -1,0 +1,7 @@
+.userlist .flex-box {
+  display: flex;
+}
+
+.userlist .space-between {
+  justify-content: space-between;
+}
