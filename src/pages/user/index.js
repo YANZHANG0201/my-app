@@ -11,7 +11,7 @@ import {
   InputNumber,
 } from "antd";
 import "./user.css";
-import { getUser, addUser, editUser } from "../../api";
+import { getUser, addUser, editUser, delUser } from "../../api";
 import dayjs from "dayjs";
 
 const User = () => {
@@ -61,10 +61,17 @@ const User = () => {
   };
 
   const handleFinish = (e) => {
-    setListData({ name: e.name });
+    setListData({ name: e.keyword });
     console.log(e);
   };
-  const handleDelete = (rowData) => {};
+  useEffect(() => {
+    getTableData();
+  }, [listData]);
+  const handleDelete = ({ id }) => {
+    delUser({ id }).then(() => {
+      getTableData();
+    });
+  };
 
   const getTableData = () => {
     getUser(listData).then(({ data }) => {
@@ -141,7 +148,12 @@ const User = () => {
         </Form>
       </div>
       <div>
-        <Table columns={columns} dataSource={TableData} rowKey={"id"} />
+        <Table
+          style={{ marginTop: "10px" }}
+          columns={columns}
+          dataSource={TableData}
+          rowKey={"id"}
+        />
         <Modal
           open={isModalOpen}
           title={modaltype ? "Add User" : "Edit User"}
