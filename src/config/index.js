@@ -26,13 +26,13 @@ export default [
     icon: "SettingOutlined",
     children: [
       {
-        path: "/other/pageOne",
+        path: "/other/page1",
         name: "page1",
         label: "页面1",
         icon: "SettingOutlined",
       },
       {
-        path: "/other/pageTwo",
+        path: "/other/page2",
         name: "page2",
         label: "页面2",
         icon: "SettingOutlined",

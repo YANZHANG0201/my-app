@@ -4,11 +4,15 @@ import { Button, Layout, Avatar, Dropdown } from "antd";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { collapseMenu } from "../../store/reducers/tab";
-
+import { useNavigate } from "react-router-dom";
 const { Header } = Layout;
 
 const CommenHeader = (collapse) => {
-  const logout = () => {};
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const items = [
     {
@@ -22,7 +26,7 @@ const CommenHeader = (collapse) => {
     {
       key: "2",
       label: (
-        <a onClick={() => logout} target="_blank" rel="noopener noreferrer">
+        <a onClick={() => logout()} target="_blank" rel="noopener noreferrer">
           登出
         </a>
       ),

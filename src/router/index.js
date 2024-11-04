@@ -5,6 +5,7 @@ import Mall from "../pages/mall/index";
 import User from "../pages/user/index";
 import PageOne from "../pages/other/page1";
 import PageTwo from "../pages/other/page2";
+import Login from "../pages/login/index";
 
 const routes = [
   {
@@ -42,6 +43,10 @@ const routes = [
         ],
       },
     ],
+  },
+  {
+    path: "/login",
+    Component: Login,
   },
 ];
 
